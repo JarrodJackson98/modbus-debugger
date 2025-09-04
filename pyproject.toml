@@ -1,0 +1,10 @@
+[project]
+name = "modbus-debugger"
+version = "0.1.0"
+description = "A simple Python tool for debugging Modbus RTU communication over serial connections"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pymodbus>=3.11.1",
+    "pyserial>=3.5",
+]
