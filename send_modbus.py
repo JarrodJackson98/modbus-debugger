@@ -1,4 +1,8 @@
-import serial, time
+import serial, time, logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def modbus_crc(b):
     crc = 0xFFFF
@@ -9,6 +13,7 @@ def modbus_crc(b):
     return crc & 0xFFFF
 
 def send_modbus(dev='/dev/ttyUSB0', baud=9600, parity='N', stopbits=1, slave=1, func=3, data=[0,0,0,2]):
+    logger.info(f"Sending Modbus frame to {dev} with baudrate {baud}, parity {parity}, stopbits {stopbits}, slave {slave}, func {func}, data {data}")
     frame_wo = bytes([slave, func] + data)
     crc = modbus_crc(frame_wo)
     frame = frame_wo + bytes([crc & 0xFF, (crc >> 8) & 0xFF])
@@ -20,8 +25,8 @@ def send_modbus(dev='/dev/ttyUSB0', baud=9600, parity='N', stopbits=1, slave=1, 
     time.sleep(0.1)
     resp = ser.read(256)  # adjust as needed
     ser.close()
-    print("TX:", frame.hex(' ').upper())
-    print("RX:", resp.hex(' ').upper())
+    logger.info(f"TX: {frame.hex(' ').upper()}")
+    logger.info(f"RX: {resp.hex(' ').upper()}")
 
 # Example:
 # send_modbus('/dev/ttyUSB0', 9600, 'N', 1, 1, 3, [0x00,0x00, 0x00,0x02])
