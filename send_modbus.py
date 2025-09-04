@@ -28,6 +28,7 @@ def send_modbus(dev='/dev/ttyUSB0', baud=9600, parity='N', stopbits=1, slave=1, 
     resp = ser.read(256)  # adjust as needed
     ser.close()
     logger.info(f"TX: {frame.hex(' ').upper()}")
+    logger.info(f"RX raw: {resp}")
     logger.info(f"RX: {resp.hex(' ').upper()}")
 
 def main():
