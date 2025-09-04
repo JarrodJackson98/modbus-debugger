@@ -26,11 +26,12 @@ def send_modbus(dev='/dev/ttyUSB0', baud=9600, parity='N', stopbits=1, slave=1, 
 # Example:
 # send_modbus('/dev/ttyUSB0', 9600, 'N', 1, 1, 3, [0x00,0x00, 0x00,0x02])
 
+# read modbus register for 
 
 
-def main():
-    send_modbus('/dev/ttyUSB0', 9600, 'N', 1, 1, 3, [0x00,0x00, 0x00,0x02])
+# def main():
+#     send_modbus('/dev/ttyUSB0', 9600, 'N', 1, 1, 3, [0x00,0x00, 0x00,0x02])
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

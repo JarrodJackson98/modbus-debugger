@@ -10,13 +10,27 @@ A simple Python tool for debugging Modbus RTU communication over serial connecti
 - Configurable serial port settings (baud rate, parity, stop bits)
 - Support for different Modbus function codes
 
-## Installation
+## Getting Started
 
-This project uses `uv` for dependency management. Install dependencies with:
+### Prerequisites
 
+- Python 3.13 or higher
+- [uv](https://docs.astral.sh/uv/) package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/JarrodJackson98/modbus-debugger.git
+cd modbus-debugger
+```
+
+2. Install dependencies using uv:
 ```bash
 uv sync
 ```
+
+This will create a virtual environment and install all required dependencies (pymodbus and pyserial).
 
 ## Usage
 
@@ -41,7 +55,16 @@ send_modbus('/dev/ttyUSB0', 9600, 'N', 1, 1, 3, [0x00, 0x00, 0x00, 0x02])
 
 ## Example
 
+Run the script using uv:
+
 ```bash
+uv run python send_modbus.py
+```
+
+Or activate the virtual environment and run directly:
+
+```bash
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 python send_modbus.py
 ```
 
