@@ -41,19 +41,34 @@ def main():
     parser.add_argument('--func', type=int, default=3, help='Function code (default: 3)')
     parser.add_argument('--addr', type=int, default=0, help='Register address (default: 0)')
     parser.add_argument('--qty', type=int, default=2, help='Quantity of registers (default: 2)')
+    parser.add_argument('--loop', type=int, default=100, help='Number of messages to send (default: 100)')
     
     args = parser.parse_args()
     
-    send_modbus(
-        dev=args.port,
-        baud=args.baud,
-        parity=args.parity,
-        stopbits=args.stopbits,
-        slave=args.slave,
-        func=args.func,
-        addr=args.addr,
-        qty=args.qty
-    )
+    if args.loop:    
+        for i in range(100):
+            send_modbus(
+                dev=args.port,
+                baud=args.baud,
+                parity=args.parity,
+                stopbits=args.stopbits,
+                slave=args.slave,
+                func=args.func,
+                addr=args.addr,
+                qty=args.qty
+            )
+            time.sleep(0.2)
+    else:
+        send_modbus(
+            dev=args.port,
+            baud=args.baud,
+            parity=args.parity,
+            stopbits=args.stopbits,
+            slave=args.slave,
+            func=args.func,
+            addr=args.addr,
+            qty=args.qty
+        )
 
 if __name__ == "__main__":
     main()
