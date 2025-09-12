@@ -15,7 +15,7 @@ def read_serial(port, baudrate, timeout=1):
                 if data:
                     print(f"Raw: {data}")
                     print(f"Hex: {binascii.hexlify(data).decode('utf-8')}")
-            time.sleep(0.1)
+            time.sleep(0.001)
 
     except KeyboardInterrupt:
         print("Exiting...")
