@@ -25,8 +25,8 @@ def read_serial(port, baudrate, timeout=1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Read raw packets from a serial port.")
-    parser.add_argument("port", help="Serial port (e.g. COM3, /dev/ttyUSB0)")
-    parser.add_argument("baud", type=int, help="Baud rate (e.g. 9600, 115200)")
+    parser.add_argument("--port", help="Serial port (e.g. COM3, /dev/ttyUSB0)")
+    parser.add_argument("--baud", type=int, help="Baud rate (e.g. 9600, 115200)")
     args = parser.parse_args()
 
     read_serial(args.port, args.baud)
